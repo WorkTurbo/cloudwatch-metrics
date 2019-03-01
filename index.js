@@ -102,7 +102,7 @@ const DEFAULT_METRIC_OPTIONS = {
   summaryInterval: 10000,
   sendCallback: () => {},
   maxCapacity: 20,
-  withTimestamp:false
+  withTimestamp: false
 };
 
 /**
@@ -160,8 +160,8 @@ Metric.prototype.put = function(value, metricName, additionalDimensions) {
       Unit: self.units,
       Value: value
     };
-    if ( this.options.withTimestamp ) {
-      payload.Timestamp = Date.now();
+    if (this.options.withTimestamp) {
+      payload.Timestamp = new Date().toISOString();
     }
 
     self._storedMetrics.push(payload);
